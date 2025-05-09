@@ -17,7 +17,7 @@ camera = st.camera_input("Capture Image")
 
 if camera:
     img = Image.open(camera)
-    st.image(img, caption-=Image captured, use_column_width=True)
+    st.image(img, caption="Image captured", use_column_width=True)
 
     labels = detect_objects(img)
     st.success(f"Detected Objects: {', '.join(lables) if labels else 'None'}")
