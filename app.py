@@ -1,5 +1,5 @@
 import os
-import cv2
+import CV2
 import streamlit as st
 import tempfile
 from PIL import Image
