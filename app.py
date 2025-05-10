@@ -26,7 +26,7 @@ if camera:
     st.info(f"Chatbot: {chat}")
 
     audio_path = speak(chat)
-    audio_file = opejn(audio_path, 'rb')
+    audio_file = open(audio_path, 'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/mp3')
     audio_file.close()
