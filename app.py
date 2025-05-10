@@ -20,7 +20,7 @@ if camera:
     st.image(img, caption="Image captured", use_column_width=True)
 
     labels = detect_objects(img)
-    st.success(f"Detected Objects: {', '.join(lables) if labels else 'None'}")
+    st.success(f"Detected Objects: {', '.join(labels) if labels else 'None'}")
 
     chat = simple_chatbot(labels)
     st.info(f"Chatbot: {chat}")
