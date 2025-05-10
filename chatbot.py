@@ -1,24 +1,13 @@
 def simple_chatbot(detected_objects):
     if not detected_objects:
-        return "I did not see any thing"
-    elif 'bed' in detected_objects:
-        return "it a bed here."
-    elif 'tv' in detected_objects:
-        return "it a TV here."
-    else:
-        return f"I noticed {', '.join(detected_objects)}. Cool Stuff!"
+        return "I couldn't detect anything. Try again!"
+
+    response = "Looks like I found these objects: " + ", ".join(detected_objects)
     
-    # response = {
-    #     "bed": "It looks like you are near a ved. want me to play sleep music",
-    #     "tv": "TV is here. Do you want to see trending shows",
-    #     "laptop": "Oh it looks laptop do you want any help with laptop",
-
-
-    # }
-
-
-print("\n  Chatbot")
-
-for obj in objects:
-    for obj in responses:
-        print("🤖",responses[obj])
+    if "bed" in detected_objects:
+        response += ". It's time to relax!"
+    elif "bottle" in detected_objects:
+        response += ". Stay hydrated!"
+    elif "laptop" in detected_objects:
+        response += ". You seem to be working."
+    return response
