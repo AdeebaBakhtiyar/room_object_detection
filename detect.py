@@ -1,17 +1,25 @@
-from ultralytics import YOLO
-import torch
-import numpy as np
-import os
+# detect.py
 
-if not os.path.exists("yolov8n.pt"):
-    YOLO("yolov8n")
-else:
-    model = YOLO("yolov8n.pt")
+from ultralytics import YOLO
+import cv2
+
+# ✅ Load the YOLO model globally
+model = YOLO("yolov8n.pt")  # or your custom model path
 
 def detect_objects(image):
+    # Ensure the image is in the correct format
+    if image is None:
+        return []
+
+    # Run detection
     results = model(image)
-    boxes = results[0].boxes
-    detected_classes = boxes.cls.tolist()
-    class_names = results[0].names
-    labels = list({class_names[int(c)] for c in detected_classes})
+    labels = []
+
+    for result in results:
+        boxes = result.boxes
+        for box in boxes:
+            cls_id = int(box.cls[0])
+            label = model.names[cls_id]
+            labels.append(label)
+
     return labels
